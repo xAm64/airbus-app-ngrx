@@ -13,7 +13,6 @@ export class AircraftService {
 
 
   public getAircrafts():Observable<Aircraft[]>{
-    //let host = Math.random() > 0.5 ? environment.host : environment.unrechableHost;
     return this.http.get<Aircraft[]>(environment.host+"/aircrafts");
   }
 
