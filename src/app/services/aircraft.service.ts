@@ -27,4 +27,8 @@ export class AircraftService {
   public getAircraftByMsn(id:Number): Observable<Aircraft>{
     return this.http.get<Aircraft>(environment.host+"/aircrafts/"+id);
   }
+
+  onSearch(value:string){
+    return this.http.get<Aircraft[]>(environment.host+"/aircrafts?prog="+value);
+  }
 }

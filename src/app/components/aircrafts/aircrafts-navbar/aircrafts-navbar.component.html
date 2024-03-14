@@ -1,7 +1,13 @@
 <nav class="navbar navbar-expand-sm">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar navbar-nav">
-        <li><button class="btn btn-outline-info m-2" (click)="getAllCrafts()">Aircrafts</button></li>
-        <li><button class="btn btn-outline-info m-2" (click)="getDesignedAircrafts()">Design</button></li>
-        <li><button class="btn btn-outline-info m-2" (click)="getDeveloppementAircrafts()">Développement</button></li>
+        <li class="nav-item active"><button class="btn btn-outline-info m-2" (click)="getAllCrafts()">Aircrafts</button></li>
+        <li class="nav-item active"><button class="btn btn-outline-info m-2" (click)="getDesignedAircrafts()">Design</button></li>
+        <li class="nav-item active"><button class="btn btn-outline-info m-2" (click)="getDeveloppementAircrafts()">Développement</button></li>
     </ul>
+    <form #f="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch(f.value)">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ngModel name="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    </div>
 </nav>

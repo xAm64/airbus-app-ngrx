@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
+import { AircraftsActionsTypes } from 'src/app/state/aircraft.state';
 
 @Component({
   selector: 'app-aircrafts-navbar',
@@ -16,13 +17,17 @@ export class AircraftsNavbarComponent implements OnInit {
   }
 
   getAllCrafts(){
-    this.eventEmitter.emit("ALL_AIRCRAFTS");
+    this.eventEmitter.emit({type: AircraftsActionsTypes.GET_ALL_AIRCRAFTS, payload : null});
   }
   getDesignedAircrafts(){
-    this.eventEmitter.emit("ALL_DISIGNED");
+    this.eventEmitter.emit({type: AircraftsActionsTypes.GET_DESIGNED_AIRCRAFTS});
   }
   getDeveloppementAircrafts(){
-    this.eventEmitter.emit("ALL_DEVELOPPEMENT");
+    this.eventEmitter.emit({type: AircraftsActionsTypes.GET_DEVELOPMENT_AIRCRAFTS});
+  }
+
+  onSearch(value:any){
+    this.eventEmitter.emit({type : AircraftsActionsTypes.GET_SEARCH_AIRCRAFTS, plyload : value.search});
   }
 
 }
