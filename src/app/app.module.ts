@@ -8,6 +8,11 @@ import { AppComponent } from './app.component';
 import { AircraftsComponent } from './components/aircrafts/aircrafts.component';
 import { AircraftsNavbarComponent } from './components/aircrafts/aircrafts-navbar/aircrafts-navbar.component';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AircraftReducer, AircraftsEffects } from './ngrx/aircrafts.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +23,10 @@ import { AircraftsNavbarComponent } from './components/aircrafts/aircrafts-navba
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({airbusState:AircraftReducer}),
+    EffectsModule.forRoot([AircraftsEffects,LoginEffects]),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
