@@ -3,6 +3,7 @@ import { Observable, catchError, startWith, map, of } from 'rxjs';
 import { Aircraft } from 'src/app/models/aircraft.model';
 import { AircraftService } from 'src/app/services/aircraft.service';
 import { ActionEvent, AircraftsActionsTypes, AppDataState, DataStateEnum } from 'src/app/state/aircraft.state';
+import { EventService } from 'src/app/state/event.service';
 
 @Component({
   selector: 'app-aircrafts',
@@ -13,9 +14,12 @@ export class AircraftsComponent implements OnInit {
   aircrafts$: Observable<AppDataState<Aircraft[]>> | null = null;
   error = null;
   readonly dataStateEnum = DataStateEnum;
-  constructor(private aircraftService:AircraftService) { }
+  constructor(private aircraftService:AircraftService, private eventService:EventService) { }
 
   ngOnInit(): void {
+    this.eventService.eventSubjectObservable.subscribe((actionEvent:ActionEvent) => {
+      this.onActionEvent(actionEvent);
+    });
   }
 
   onActionEvent($actionEvent : ActionEvent){
