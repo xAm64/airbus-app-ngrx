@@ -29,6 +29,6 @@ export class AircraftService {
   }
 
   onSearch(value:string){
-    return this.http.get<Aircraft[]>(environment.host+"/aircrafts?prog="+value);
+    return this.http.get<Aircraft[]>(environment.host+"/aircrafts?prog_like="+value);
   }
 }

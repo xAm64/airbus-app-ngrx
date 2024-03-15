@@ -9,6 +9,7 @@ import { AircraftsActionsTypes } from 'src/app/state/aircraft.state';
   styleUrls: ['./aircrafts-navbar.component.css']
 })
 export class AircraftsNavbarComponent implements OnInit {
+  value: string = "";
   @Output() eventEmitter : EventEmitter<any> = new EventEmitter();
 
   constructor() { }
@@ -27,7 +28,7 @@ export class AircraftsNavbarComponent implements OnInit {
   }
 
   onSearch(value:any){
-    this.eventEmitter.emit({type : AircraftsActionsTypes.GET_SEARCH_AIRCRAFTS, plyload : value.search});
+    this.eventEmitter.emit({type : AircraftsActionsTypes.GET_SEARCH_AIRCRAFTS, payload : value});
   }
 
 }
