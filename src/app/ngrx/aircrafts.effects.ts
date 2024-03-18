@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { AircraftService } from "../services/aircraft.service";
-import { Actions } from "@ngrx/effects";
-import { Observable, catchError, mergeMap } from "rxjs";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Observable, catchError, map, mergeMap, of } from "rxjs";
 import { AircraftsActionsTypes, GetAllAircraftsActionError, GetAllAircraftsActionSuccess } from "./aircrafts.actions";
+import { Action } from "@ngrx/store";
 
 @Injectable ()
 export class AircraftsEffects{

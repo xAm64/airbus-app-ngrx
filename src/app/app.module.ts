@@ -11,7 +11,8 @@ import { AircraftsNavbarComponent } from './components/aircrafts/aircrafts-navba
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AircraftReducer, AircraftsEffects } from './ngrx/aircrafts.effects';
+import { AircraftsEffects } from './ngrx/aircrafts.effects';
+import { AircraftReducer } from './ngrx/aircrafts.reducer';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,10 @@ import { AircraftReducer, AircraftsEffects } from './ngrx/aircrafts.effects';
     AppRoutingModule,
     FormsModule,
     StoreModule.forRoot({airbusState:AircraftReducer}),
-    EffectsModule.forRoot([AircraftsEffects,LoginEffects]),
-    StoreDevtoolsModule.instrument()
+    EffectsModule.forRoot([AircraftsEffects]),
+    StoreDevtoolsModule.instrument(),
+    StoreModule.forRoot({airbusState:AircraftReducer}),
+    EffectsModule.forRoot([AircraftsEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
