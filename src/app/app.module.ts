@@ -27,8 +27,6 @@ import { AircraftReducer } from './ngrx/aircrafts.reducer';
     FormsModule,
     StoreModule.forRoot({airbusState:AircraftReducer}),
     EffectsModule.forRoot([AircraftsEffects]),
-    StoreModule.forRoot({airbusState:AircraftReducer}),
-    EffectsModule.forRoot([AircraftsEffects]),
     StoreDevtoolsModule.instrument()
   ],
   providers: [],

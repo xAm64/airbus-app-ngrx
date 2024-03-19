@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { AircraftStateEnum } from 'src/app/ngrx/aircrafts.state';
-import { AircraftsState } from 'src/app/ngrx/aircrafts.state';
+import { AircraftStateEnum, AircraftsState } from 'src/app/ngrx/aircrafts.state';
 
 @Component({
   selector: 'app-aircrafts',
@@ -12,6 +11,7 @@ import { AircraftsState } from 'src/app/ngrx/aircrafts.state';
 export class AircraftsComponent implements OnInit {
   aircraftsState$:Observable<AircraftsState> | null = null;
   readonly aircraftsStateEnum = AircraftStateEnum;
+
   constructor(private store:Store<any>) { }
 
   ngOnInit(): void {
